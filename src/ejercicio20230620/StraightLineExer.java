@@ -10,9 +10,17 @@ public class StraightLineExer {
 
 	}
 	
-	public static boolean checkStraightLine(int[][] coordinates) {
+	public static boolean checkStraightLine(int[][] c) {
 		boolean resp = true;
-		
+		int xmedia = c[1][0] - c[0][0];
+		int ymedia = c[1][1] - c[0][1];
+		for(int i =1 ; i< c.length ; i++){
+			int x = c[i][0] - c[i-1][0];
+            int y = c[i][1] - c[i-1][1];
+			if(y*xmedia != x * ymedia) {
+				return false;
+			}	
+		}
 		return resp;
     }
 
