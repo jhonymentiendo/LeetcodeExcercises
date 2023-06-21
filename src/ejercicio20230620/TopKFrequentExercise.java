@@ -1,47 +1,47 @@
 package ejercicio20230620;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class TopKFrequentExercise {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		System.out.println(Arrays.toString( topFrequent(new int[]{1,1,1,2,2,3,3,4,5,6}, 3 ) ) );
+		
 	}
 
 	
 	public static int[] topFrequent(int[] nums, int k) {
-		Map<Integer, Integer> mapa= new HashMap<>();
+		Map<Integer,Integer> mapa = new HashMap<Integer,Integer>();	
 		int[] resp = new int[k];
-		int index = 0;
-		//fill a map with ocurrences
-		for(int n : nums) {
-			mapa.put(n, ( mapa.get(n) == null? 0 : mapa.get(n) )+1);
+		int index =0;
+
+		//this was my idea
+		for (int i : nums) {
+			mapa.put(i, (mapa.get(i)==null?0:mapa.get(i)) +1);
 		}
 		
-		//fill a priority queue with ordered ocurrences
-			//crear priorityqueue
-		Queue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(
-				(a,b)-> a.getValue()-b.getValue());//constructor
-				
-		for (Map.Entry<Integer, Integer> entry : pq) {
+	//gotta be honest, i didnt knew this object and still figuring out the constructor part
+		PriorityQueue<Map.Entry<Integer,Integer>> pq = new PriorityQueue<>((a,b)->a.getValue()-b.getValue());
+		for (Map.Entry<Integer,Integer> entry : mapa.entrySet()) {
 			pq.offer(entry);
 			if(pq.size()>k) {
 				pq.poll();
 			}
 		}
 		
-		while(!pq.isEmpty()) {
-			resp[index++] = pq.poll().getValue();
+	    //that do was my idea
+		for(int i=0 ; i<k ; i++ ) {
+			resp[index++] = pq.poll().getKey();
 		}
 		
-		//fill response with top priority
 		
-		return resp;
-	}
+	    return resp;
+
+		}
 	
 	
 }
