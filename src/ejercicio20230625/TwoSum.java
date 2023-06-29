@@ -1,14 +1,10 @@
 package ejercicio20230625;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TwoSum {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		System.out.println(    twoSum2(new int[] {4,1},2)   );
+		System.out.println(    twoSum(new int[] {4,1},2)   );
 		
 	}
 	
